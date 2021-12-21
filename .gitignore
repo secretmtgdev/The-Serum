@@ -1,0 +1,7 @@
+demos/**
+errors.txt
+traceback.txt
+log.txt
+game/saves/
+game/cache/
+game/*.rypc

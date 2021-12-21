@@ -23,6 +23,10 @@
             "attack": random.randrange(1, 20, 1) + attack_boost,
             "speed": random.randrange(1, 20, 1) + speed_boost
         }
+    
+    def get_familiar(ranking, dict):
+        idx = 0 if ranking > 11 else 1
+        return dict["familiars"][idx]
 
 label start:
     call initialize_variables
