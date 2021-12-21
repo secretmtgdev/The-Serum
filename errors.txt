@@ -1,0 +1,17 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/script.rpy", line 21: EOL while scanning string literal
+(Perhaps you left out a " at the end of the first line.)
+    intro_list = ["Welcome", "I truly hope that you have found your journey up to this point fruitful and rewarding.
+                                                                                                                    ^
+    
+
+File "game/script.rpy", line 30: invalid syntax
+        str(intro_list[i]) with Dissolve(text_fade_rate)
+                               ^
+    
+
+Ren'Py Version: Ren'Py 7.4.11.2266
+Mon Dec 20 16:01:09 2021
