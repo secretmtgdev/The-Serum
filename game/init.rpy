@@ -1,4 +1,6 @@
 label initialize_variables:
+    $ game_manager = GameManager()
+    call initialize_player
     call initialize_game_speeds
     call initialize_images
     call initialize_entities
@@ -37,56 +39,25 @@ label initialize_entities:
     $ entities = {
         "water": {
             "familiars": [
-                {
-                    "name": "Water byte", 
-                    "ability": {
-                        "name": "Douse",
-                        "description": "Renders the enemy immobile for 2 turns",
-                        "cost": 2
-                    }
-                },
-                {
-                    "name": "Ice byte",
-                    "ability": 
-                    {
-                        "name": "Freeze",
-                        "description": "Renders the enemy immobile for 1 turn",
-                        "cost": 1
-                    }
-                }],
+                Familiar("Water byte", Ability("Douse", "Renders the enemy immobile for 2 turns", 2)),
+                Familiar("Ice byte", Ability("Freeze", "Renders the enemy immobile for 1 turn", 1))
+            ],
             "god": "Susanoo, God of Seas and Storms",
             "monsters": ["Kappa", "Wani"]
         },
         "fire": {
             "familiars": [
-                {
-                    "name": "Fire byte", 
-                    "ability": 
-                    {
-                        "name": "Burn",
-                        "description": "Enemy takes an additional 2 damage each turn",
-                        "cost": 2
-                    }, 
-                },
-                { 
-                    "name": "Spark byte",
-                    "ability": {
-                        "name": "Jolt",
-                        "description": "Enemy takes an additional 1 damage each turn",
-                        "cost": 1
-                    }
-                }],
+                Familiar("Fire byte", Ability("Burn", "Enemy takes an additional 2 damage each turn", 2)),
+                Familiar("Spark byte", Ability("Jolt", "Enemy takes an additional 1 damage each turn", 1))
+            ],
             "god": "Kojin, God of Fire",
             "monsters": ["Basan, Fowl of Fire", "Itsumade, Bird of Flame"]
         }
     }
     return
 
-label initialize_character:
-    $ character_name = ""
-    $ element = ""
-    $ stats = {}
-    $ realm = ""
+label initialize_player:
+    $ player = Player()
     return
 
 label initialize_questions:

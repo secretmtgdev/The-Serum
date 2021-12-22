@@ -16,8 +16,8 @@
         return character_name
 
     def generate_stats():
-        attack_boost = 5 if element == "fire" else 0
-        speed_boost = 5 if element == "water" else 0
+        attack_boost = 5 if game_manager.element == "fire" else 0
+        speed_boost = 5 if game_manager.element == "water" else 0
         return {
             "hp": random.randrange(1, 20, 1),
             "attack": random.randrange(1, 20, 1) + attack_boost,
@@ -28,13 +28,17 @@
         idx = 0 if ranking > 11 else 1
         return dict["familiars"][idx]
 
+define audio.machine = "audio/sfx/machine.wav"
+
 label start:
+    play music "audio/music/ambient.mp3" fadein 2 fadeout 2
     call initialize_variables
     call narrator_intro
     show question_room
     call round_1
     call round_2
     call round_3
+    stop music
     return
 
 label narrator_intro:
@@ -42,10 +46,10 @@ label narrator_intro:
     "Welcome...uhmm...what's your name exactly?" with Dissolve(text_fade_rate)
     $ pause_rate
 
-    $ character_name = get_character_name()    
+    $ player.name = get_character_name()    
 
     scene space_2 with Dissolve(background_fade_rate)
-    "Well [character_name], I truly hope that you have found your journey up to this point fruitful and rewarding.
+    "Well [player.name], I truly hope that you have found your journey up to this point fruitful and rewarding.
     Savor this moment while you can, for now you are about to embark on a journey beyond 
     your wildest imagination." with Dissolve(text_fade_rate)
     $ pause_rate

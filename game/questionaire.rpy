@@ -5,8 +5,8 @@ label round_1:
 
 label round_2:
     $ score_phrase = "hot headed" if ranking < 0 else "cool and collected"
-    $ element = "fire" if ranking < 0 else "water"
-    $ realm = entities[element]
+    $ game_manager.element = "fire" if ranking < 0 else "water"
+    $ game_manager.realm = entities[game_manager.element]
     "Interesting your tendancies lean toward being [score_phrase]..."
     "Let's dive a little deeper into your personality, shall we? I hope you're ready..."
     
@@ -18,14 +18,14 @@ label round_2:
     else:
         $ ranking += ask_questions(water_based_questions)
         call water_base
-    "Congrats [character_name] on your new companion [familiar[name]]"
+    "Congrats [player.name] on your new companion [familiar.name]"
     return
 
 label round_3:
-    "Once again, congrats [character_name] on making it this far...Now it is time to attain your stats..."
+    "Once again, congrats [player.name] on making it this far...Now it is time to attain your stats..."
     "**machine whirring**"
-
-    $ stats = generate_stats()
+    play sound "machine"
+    $ player.stats = generate_stats()
     "**machine stops**"
     
     call current_player_stats
@@ -35,9 +35,9 @@ label round_3:
     return
 
 label fire_base:
-    $ familiar = get_familiar(ranking, realm)
+    $ familiar = get_familiar(ranking, game_manager.realm)
     return
 
 label water_base:
-    $ familiar = get_familiar(ranking, realm)
+    $ familiar = get_familiar(ranking, game_manager.realm)
     return
